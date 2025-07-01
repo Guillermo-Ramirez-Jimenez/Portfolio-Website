@@ -1,0 +1,523 @@
+@use '_colors' as c;
+@use '_fonts' as f;
+@use '_mixins' as m;
+@use 'icons' as i;
+@use '_adaptive' as a;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background-color: c.$black;
+  background-image: url('../../img/shape_1.svg'), url('../../img/shape_2.svg'), url('../../img/shape_3.svg');
+  background-repeat: no-repeat;
+  background-position: left 86px, right 254px, right 1260px;
+  @include a.breakpoint(tablet) {
+    background-position: left 86px, right 471px, right 1030px;
+  }
+  @include a.breakpoint(desktopxl) {
+    background-image: url('../../img/shape_4.svg'), url('../../img/shape_5.svg'), url('../../img/shape_6.svg');
+    background-position: left 133px, 58% 521px, right 1070px;
+  }
+}
+
+header {
+  padding-top: 20px;
+  padding-bottom: 330px;
+  text-align: center;
+  @include a.breakpoint(tablet) {
+    display: flex;
+    align-items: center;
+    padding-bottom: 90px;
+    padding-top: 29px;
+    margin: 0 30px;
+  }
+  @include a.breakpoint(desktopxl) {
+    padding-top: 40px;
+    padding-bottom: 130px;
+    margin: 0 195px 0 165px;
+  }
+  .logo {
+    padding-bottom: 20px;
+    @include a.breakpoint(tablet) {
+      padding: 0;
+      width: 172px;
+    }
+  }
+  .social_networks {
+    margin-left: auto;
+    margin-right: auto;
+    width: 154px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25.6px;
+    a:hover:before {
+      color: c.$green;
+    }
+    @include a.breakpoint(tablet) {
+      width: auto;
+      margin-right: 0;
+    }
+    a:before {
+      @include a.breakpoint(tablet) {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+main {
+  .hero {
+    text-align: center;
+    padding: 0 16px 80px 16px;
+    @include a.breakpoint(tablet) {
+      text-align: left;
+      width: 65%;
+      padding: 0 0 80px 32px;
+      min-height: 494px;
+    }
+    @include a.breakpoint(desktopxl) {
+      padding: 0 0 231px 165px;
+      min-height: 620px;
+    }
+    &__img-mobile {
+      width: 174px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: -1;
+      @include a.breakpoint(tablet) {
+        display: none;
+      }
+    }
+    &__img-tablet {
+      display: none;
+      @include a.breakpoint(tablet) {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 322px;
+        z-index: -1;
+      }
+      @include a.breakpoint(desktopxl) {
+        display: none;
+      }
+    }
+    &__img-desktop {
+      display: none;
+      @include a.breakpoint(desktopxl) {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 165px;
+        width: 445px;
+        z-index: -1;
+      }
+    }
+    &__title {
+      font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 40px;
+      letter-spacing: -1.14px;
+      color: c.$white;
+      padding-bottom: 24px;
+      @include a.breakpoint(tablet) {
+        font-size: 72px;
+        line-height: 72px;
+        letter-spacing: -2.05px;
+        padding-bottom: 60px;
+      }
+      @include a.breakpoint(desktopxl) {
+        font-size: 88px;
+        line-height: 88px;
+        letter-spacing: -2.5px;
+        padding-bottom: 43px;
+      }
+      span {
+        text-decoration: underline;
+        text-decoration-color: c.$green;
+        text-decoration-thickness: 4px;
+        text-underline-offset: 10px;
+        @include a.breakpoint(tablet) {
+          text-decoration-thickness: 6px;
+        }
+      }
+    }
+    &__subtitle {
+      font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 26px;
+      letter-spacing: 0;
+      color: c.$grey;
+      padding-bottom: 24px;
+      @include a.breakpoint(tablet) {
+        font-size: 18px;
+        padding-bottom: 34px;
+        width: 90%;
+      }
+      @include a.breakpoint(desktopxl) {
+        padding-bottom: 66px;
+        width: 55%;
+      }
+    }
+    &__contactbutton {
+      @include m.button;
+    }
+  }
+  .abilities {
+    border-top: 1px solid c.$white;
+    border-bottom: 1px solid c.$white;
+    margin: 0 16px 80px 16px;
+    padding: 40px 0 16px 0;
+    @include a.breakpoint(tablet) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 52px 0 0 0; 
+      margin: 0 30px 100px 30px;
+      border-bottom: none;
+    }
+    @include a.breakpoint(desktopxl) {
+      grid-template-columns: repeat(3, 1fr);
+      padding-top: 72px;
+      margin: 0 165px 140px 165px;
+    }
+    &__ability {
+      padding-bottom: 24px;
+      text-align: center;
+      @include a.breakpoint(tablet) {
+        text-align: left;
+        padding-bottom: 52px;
+      }
+      h2 {
+        font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: -1px;
+        color: c.$white;
+        @include a.breakpoint(tablet) {
+          font-size: 48px;
+          line-height: 56px;
+          letter-spacing: -1.5px;
+          padding-bottom: 14px;
+        }
+      }
+      p {
+        font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 26px;
+        color: c.$grey;
+        @include a.breakpoint(tablet) {
+          font-size: 18px;
+          line-height: 28px;
+        }
+      }
+    }
+  }
+  .projects {
+    padding: 0 16px 40px 16px;
+    @include a.breakpoint(tablet) {
+      padding: 0 30px 112px 30px;
+    }
+    @include a.breakpoint(desktopxl) {
+      padding: 0 165px 112px 165px;
+    }
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 40px;
+      @include a.breakpoint(tablet) {
+        align-items: center;
+        padding-bottom: 60px;
+      }
+      @include a.breakpoint(desktopxl) {
+        padding-bottom: 80px;
+      }
+      &__header {
+        font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 40px;
+        color: c.$white;
+        @include a.breakpoint(tablet) {
+          font-size: 72px;
+          line-height: 72px;
+          letter-spacing: -2.05px;
+        }
+        @include a.breakpoint(desktopxl) {
+          font-size: 88px;
+          line-height: 88px;
+          letter-spacing: -2.5px;
+        }
+      }
+      &__contactbutton {
+        @include m.button;
+      }
+    }
+    &__container {
+      @include a.breakpoint(tablet) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 69px 24px;
+      }
+    }
+    &__project {
+      padding-bottom: 52px;
+      position: relative;
+      @include a.breakpoint(tablet) {
+        padding: 0;
+      }
+      &__img {
+        width: 100%;
+        padding-bottom: 20px;
+      }
+      &__title {
+        font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+        color: c.$white;
+        text-transform: uppercase;
+        @include a.breakpoint(tablet) {
+          padding-bottom: 7px;
+        }
+      }
+      &__languages {
+        display: flex;
+        gap: 18px;
+        padding-bottom: 20px;
+        li {
+          font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 28px;
+          color: c.$grey;
+          text-transform: uppercase;
+        }
+      }
+      &__buttons {
+        display: flex;
+        gap: 32px;
+        a {
+          @include m.button;
+          @include a.breakpoint(desktopxl) {
+            display: none;
+          }
+        }
+      }
+    }
+    &__project:hover {
+      @include a.breakpoint(desktopxl) {
+        a {
+          display: block;
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0);
+          &:first-child {
+            top: 25%;
+          }
+          &:nth-child(2) {
+            top: 45%;
+          }
+        }
+        img {
+          opacity: 10%;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  background-color: c.$darkgrey;
+  background-image: url('../../img/shape_1.svg');
+  background-repeat: no-repeat;
+  background-position: left 433px;
+  @include a.breakpoint(tablet) {
+    background-position: left 547px;
+  }
+  @include a.breakpoint(desktopxl) {
+    background-image: url('../../img/shape_7.svg');
+    background-position: left 327px;
+  }
+  .container {
+    @include a.breakpoint(desktopxl) {
+      display: flex;
+      justify-content: space-between;
+      padding: 84px 165px 104px 165px;
+    }
+  }
+  .text {
+    &__contact {
+      padding-top: 60px;
+      padding-bottom: 20px;
+      font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 40px;
+      letter-spacing: -1.14px;
+      color: c.$white;
+      text-align: center;
+      @include a.breakpoint(tablet) {
+        font-size: 72px;
+        line-height: 72px;
+        letter-spacing: -2.05px;
+      }
+      @include a.breakpoint(desktopxl) {
+        padding: 0;
+        padding-bottom: 36px;
+        text-align: left;
+        font-size: 88px;
+        line-height: 88px;
+        letter-spacing: -2.5px;
+      }
+    }
+    &__description {
+      padding: 0 16px 50px 16px;
+      font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 26px;
+      color: c.$grey;
+      text-align: center;
+      @include a.breakpoint(tablet) {
+        font-size: 18px;
+        line-height: 28px;
+        padding: 0 162px 48px 162px;
+      }
+      @include a.breakpoint(desktopxl) {
+        padding: 0;
+        text-align: left;
+        max-width: 445px;
+      }
+    }
+  }
+  .contact_form {
+    position: relative;
+    padding: 0 16px 100px 16px;
+    @include a.breakpoint(tablet) {
+      padding: 0 162px 104px 162px;
+    }
+    @include a.breakpoint(desktopxl) {
+      padding: 0;
+      min-width: 445px;
+    }
+    .field {
+      width: 100%;
+      display: block;
+      border: none;
+      background-color: transparent;
+      text-transform: uppercase;
+      font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 26px;
+      letter-spacing: -0.22px;
+      color: c.$white;
+      border-bottom: 1px solid c.$white;
+      padding: 0 0 16px 24px;
+      margin-bottom: 32px;
+      &:focus {
+        border-bottom-color: c.$green;
+        outline: none;
+      }
+    }
+    #email {
+      &:user-invalid {
+        border-bottom: 1px solid c.$red;
+        background-image: url('../../img/invalid.svg');
+        background-repeat: no-repeat;
+        background-position: top right;
+        & + .email_error {
+          display: block;
+        }
+      }
+    }
+    .email_error {
+      display: none;
+      position: absolute;
+      top: 120px;
+      right: 16px;
+      font-family: 'Space Grotesk', Arial, Helvetica, sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: -0.17px;
+      color: c.$red;
+    }
+    #message {
+      margin-bottom: 32px;
+      height: 100px;
+    }
+    #submit {
+      background-color: c.$darkgrey;
+      border: none;
+      margin-left: auto;
+      display: block;
+      @include m.button;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+  .footer_logo {
+    text-align: center;
+    padding: 39px 0 60px 0;
+    margin: 0 16px;
+    border-top: 1px solid c.$white;
+    @include a.breakpoint(tablet) {
+      margin: 0 30px;
+      padding: 30px 0 40px 0;
+      display: flex;
+    }
+    @include a.breakpoint(desktopxl) {
+      margin: 0 165px;
+      padding: 47px 0 92px 0;
+    }
+    &__img {
+      padding-bottom: 20px;
+      @include a.breakpoint(tablet) {
+        width: 172px;
+        padding: 0;
+      }
+    }
+    &__social_networks {
+      margin-left: auto;
+      margin-right: auto;
+      width: 154px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25.6px;
+      a:hover:before {
+        color: c.$green;
+      }
+      @include a.breakpoint(tablet) {
+        width: auto;
+        margin-right: 0;
+      }
+      a:before {
+        @include a.breakpoint(tablet) {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
